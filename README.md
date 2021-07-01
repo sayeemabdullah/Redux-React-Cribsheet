@@ -101,7 +101,15 @@ export const BUY_APPLE = "BUY_APPLE"
 
 ```
 
-So we are exporting a const with the same value so that we don’t do any mistakes while typing or we can say we are using that as a constant. This `appleTypes` is just a part of the file structure. We can also not use it if we want. 
+So we are exporting a const with the same value so that we don’t do any mistakes while typing or we can say we are using that as a constant. This `appleTypes` is just a part of the file structure. We can also not use it if we want.
+
+Once it is done we will make `index.jsx` inside the redux folder from where we will export all action creators as shown below:
+
+``` js
+
+export { buyApple } from "./apple/appleActions";
+
+```
 
 ___
 
@@ -197,3 +205,41 @@ The provider is used to provide the store to components and we specify the store
 
 ___
 
+## Connecting without Hooks
+
+After connecting in the `AppleContainer` the file will look something like this:
+
+``` js
+
+import React from "react";
+import { connect } from "react-redux";
+import { buyApple } from "../redux";
+
+function AppleContainer(props) {
+  return (
+    <>
+      <div>
+        <h2>Number of Apples: {props.numOfApples}</h2>
+        <button onClick={props.buyApple}>Buy Apple</button>
+      </div>
+    </>
+  );
+}
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    numOfApples: state.apple.numOfApples,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    buyApple: () => dispatch(buyApple()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
+
+```
+___
