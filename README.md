@@ -149,11 +149,13 @@ const rootReducer = combineReducers({
 export default rootReducer;
 
 ```
-This is a small application but in real life, there will be many reducers and it will be hard for us to control inside the `store`. So in the `rootReducer`, we use a function of Redux called `combineReducers`. Here we can access multiple reducers inside a single reducer as shown above. 
+This is a small application but in real life, there will be many reducers and it will be hard for us to control inside the `store`. So in the `rootReducer`, we use a function of Redux called `combineReducers`. Here we can access multiple reducers inside a single reducer as we bind all the reducers into one. 
 
 ___
 
 ## Store
 
 ___
+
+
 
