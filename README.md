@@ -105,3 +105,35 @@ So we are exporting a const with the same value so that we don’t do any mistak
 
 ___
 
+## Reducers
+
+Our Reducer file is `appleReducer` which will look something like this:
+
+``` js
+
+import { BUY_APPLE } from "./appleTypes";
+
+const initialState = {
+  numOfApples: 20,
+};
+
+const appleReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case BUY_APPLE:
+      return {
+        ...state,
+        numOfApples: state.numOfApples - 1,
+      };
+    default:
+      return state;
+  }
+};
+
+export default appleReducer;
+
+```
+
+So here first we initialize the `initialState` where our numbers of apples are 20. And then in our reducer, `appleReducer` will receive two parameters which are the **state** which is **initialState** in our case and **action** which we have already created. After that, we have created a switch where the action type will be passed and as we have only one action type at the moment so there is only one case `BUY_APPLE` which will decrement the `numOfApples` by 1 and another default that will return the state. 
+
+___
+
