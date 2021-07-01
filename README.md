@@ -53,7 +53,7 @@ ___
 
 ## Scenario
 
-Before starting implementation lets us think of a scenario, so we will make an application that will show **numbers of apple** and if we press a button the **numbers of apple will decrease**.
+Before starting implementation lets us think of a scenario, so we will make an application that will show **number of apples** and if we press a button the **number of apples will decrease**.
 So the basic structure of the `AppleContainer` will be something like the following: 
 
 ``` js
