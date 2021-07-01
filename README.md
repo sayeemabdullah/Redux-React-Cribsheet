@@ -155,7 +155,44 @@ ___
 
 ## Store
 
+``` js
+
+import { createStore } from "redux";
+import rootReducer from "./rootReducer";
+
+const store = createStore(rootReducer);
+
+export default store;
+
+```
+
+So here we call a function of redux called `createStore` to create a store where we pass the `rootReducer` as a parameter.
 ___
 
+## Provider
 
+The `provider` is a component of `react-redux`. We will use `provider` in the `App.js` file as follows:
+
+``` js
+
+import { Provider } from "react-redux";
+import "./App.css";
+import AppleContainer from "./components/AppleContainer";
+import store from "./redux/store";
+
+function App() {
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <AppleContainer></AppleContainer>
+      </div>
+    </Provider>
+  );
+}
+
+export default App;
+
+```
+
+___
 
