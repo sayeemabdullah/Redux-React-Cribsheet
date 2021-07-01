@@ -3,8 +3,9 @@
 > Redux is a JavaScript state management library. It can be used with libraries like React and Angular. But in this cribsheet, we will use it with [React](https://github.com/sayeemabdullah/React-Cribsheet#readme).
 
 
-## Three Core Concepts
+## Three Building Parts
 
+The three-building parts of Redux are **Store**, **Action** and **Reducer**. In brief, we can say that store holds the state of our application, action describes what happened and the reducer ties the store and the actions together.
 
 ___
 
