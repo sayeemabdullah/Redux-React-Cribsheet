@@ -46,11 +46,7 @@ Different people use different structures but I follow [Vishwas’s](https://git
 
 ![Screenshot 2021-07-01 at 1 28 24 PM](https://user-images.githubusercontent.com/31423599/124083984-527c4400-da70-11eb-99a0-648b4aa2c1d9.png)
 
-So here he made a separate folder for all the redux files and inside the **redux folder** he made separate folders for each container where the container’s **Action**, **Reducer** and **Types** file will be kept. As we go through the cribsheet we will grasp a better understanding of redux and the folder structure. 
+So here he made a separate folder for all the redux files and inside the **redux folder** he made separate folders for each container where the container’s **Action**, **Reducer** and **Types** files are kept. As we go through the cribsheet, we will better grasp **redux** and the **folder structure**. 
 
 ___
-
-
-
-
 
