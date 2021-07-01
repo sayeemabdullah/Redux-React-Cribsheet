@@ -50,3 +50,36 @@ So here he made a separate folder for all the redux files and inside the **redux
 
 ___
 
+
+## Scenario
+
+Before starting implementation lets us think of a scenario, so we will make an application that will show **numbers of apple** and if we press a button the **numbers of apple will decrease**.
+So the basic structure of the `AppleContainer` will be something like the following: 
+
+``` js
+
+import React from "react";
+
+function AppleContainer(props) {
+  return (
+    <>
+      <div>
+        <h2>Number of Apples: </h2>
+        <button>Buy Apple</button>
+      </div>
+    </>
+  );
+}
+
+export default AppleContainer;
+
+```
+
+___
+
+## Actions
+
+
+
+
+
