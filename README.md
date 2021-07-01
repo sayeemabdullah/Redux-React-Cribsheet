@@ -6,6 +6,7 @@
 ## Three Core Concepts
 
 
+___
 
 ## Getting Started
  
@@ -18,7 +19,7 @@ npx create-react-app name-of-our-project
 
 ```
 
-And now to start our project we will use the following command after going to our project directory which is **react-app** for me:
+And now to start our project we will use the following command after going to our project directory:
 
 ``` shell
 
@@ -34,3 +35,6 @@ npm install redux react-redux
 
 ```
 
+As now we are ready we can start our implementation.
+
+___
