@@ -205,7 +205,7 @@ The provider is used to provide the store to components and we specify the store
 
 ___
 
-## Connecting without Hooks
+## Connect without Hooks
 
 After connecting in the `AppleContainer` the file will look something like this:
 
@@ -242,4 +242,32 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
+So we can see we have used `mapStateToProps` and `mapDispatchToProps`. Firstly `mapStateToProps` is used when we want to access the **redux state** in our component. Here we get **redux state** as a parameter that can be used. If we want to dispatch any function we use `mapDispatchToProps`. And we connect both of them with our component using `connect`.
+
+___
+
+## Connect with Hooks
+
+``` js
+
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { buyApple } from "../redux";
+
+function AppleContainer(props) {
+  const numberOfCakes = useSelector((state) => state.apple.numOfApples);
+  const dispatch = useDispatch();
+  return (
+    <div>
+      <h2>Number of Apples: {numberOfCakes} </h2>
+      <button onClick={() => dispatch(buyApple())}>Buy Apple</button>
+    </div>
+  );
+}
+
+export default AppleContainer;
+
+```
+I always believe hooks made our life easier. The code above is one of the examples. We don’t need to write functions like `mapStateToProps` and `mapDispatchToProps` we can simply use `useSelector` and `useDispatch`.
+
 ___
