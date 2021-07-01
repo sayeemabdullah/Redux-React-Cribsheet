@@ -79,7 +79,29 @@ ___
 
 ## Actions
 
+An action is an object with a type property. So our `appleActions` file will be like the following:
 
+``` js
 
+import { BUY_APPLE } from "./appleTypes";
 
+export const buyApple = () => {
+  return {
+    type: BUY_APPLE,
+  };
+};
+
+```
+
+But here we can see that we are importing `BUY_APPLE` from a file named `appleTypes`. Inside the `appleTypes` we will find:
+
+``` js
+
+export const BUY_APPLE = "BUY_APPLE"
+
+```
+
+So we are exporting a const with the same value so that we don’t do any mistakes while typing the `type` parameter. This `appleTypes` is just a part of the file structure. We can also not use it if we want. 
+
+___
 
