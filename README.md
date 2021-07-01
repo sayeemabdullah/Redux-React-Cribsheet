@@ -39,3 +39,12 @@ npm install redux react-redux
 As now we are ready we can start our implementation.
 
 ___
+
+## Folder Structure
+
+Different people use different structures but I follow [Vishwas’s](https://github.com/gopinav) one which is something like below: 
+
+![Screenshot 2021-07-01 at 1 23 15 PM](https://user-images.githubusercontent.com/31423599/124083315-8a36bc00-da6f-11eb-8786-0e6cf60ca10f.png)
+
+
+___
