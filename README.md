@@ -171,7 +171,7 @@ ___
 
 ## Provider
 
-The `provider` is a component of `react-redux`. We will use `provider` in the `App.js` file as follows:
+`Provider` is a component of `react-redux`. We will use `Provider` in the `App.js` file as follows:
 
 ``` js
 
@@ -193,6 +193,7 @@ function App() {
 export default App;
 
 ```
+The provider is used to provide the store to components and we specify the store with a props name `store`. And as shown above we used it in the `App` component so that everyone gets the store.
 
 ___
 
