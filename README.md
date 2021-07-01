@@ -5,7 +5,7 @@
 
 ## Three Building Parts
 
-The three-building parts of Redux are **Store**, **Action** and **Reducer**. In brief, we can say that store holds the state of our application, action describes what happened and the reducer ties the store and the actions together.
+The three-building parts of Redux are `Store`, `Action` and `Reducer`. In brief, we can say that store holds the state of our application, action describes what happened and the reducer ties the store and the actions together.
 
 ___
 
