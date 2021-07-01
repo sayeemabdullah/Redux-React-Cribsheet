@@ -135,5 +135,25 @@ export default appleReducer;
 
 So here first we initialize the `initialState` where our numbers of apples are 20. And then in our reducer, `appleReducer` will receive two parameters which are the **state** which is **initialState** in our case and **action** which we have already created. After that, we have created a switch where the action type will be passed and as we have only one action type at the moment so there is only one case `BUY_APPLE` which will decrement the `numOfApples` by 1 and another default that will return the state. 
 
+But now before creating the `store` we will make another file `rootReducer` which will as follows:
+
+``` js
+
+import { combineReducers } from "redux";
+import appleReducer from "./apple/appleReducer";
+
+const rootReducer = combineReducers({
+  apple: appleReducer,
+});
+
+export default rootReducer;
+
+```
+This is a small application but in real life, there will be many reducers and it will be hard for us to control inside the `store`. So in the `rootReducer`, we use a function of Redux called `combineReducers`. Here we can access multiple reducers inside a single reducer as shown above. 
+
+___
+
+## Store
+
 ___
 
