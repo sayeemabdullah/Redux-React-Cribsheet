@@ -93,7 +93,7 @@ export const buyApple = () => {
 
 ```
 
-But here we can see that we are importing `BUY_APPLE` from a file named `appleTypes`. Inside the `appleTypes` we will find:
+But here we can see that we are importing `BUY_APPLE` from a file named `appleTypes` which is used as an action type. Inside the `appleTypes` we will find:
 
 ``` js
 
@@ -101,7 +101,7 @@ export const BUY_APPLE = "BUY_APPLE"
 
 ```
 
-So we are exporting a const with the same value so that we don’t do any mistakes while typing the `type` parameter. This `appleTypes` is just a part of the file structure. We can also not use it if we want. 
+So we are exporting a const with the same value so that we don’t do any mistakes while typing or we can say we are using that as a constant. This `appleTypes` is just a part of the file structure. We can also not use it if we want. 
 
 ___
 
