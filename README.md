@@ -1,6 +1,6 @@
 # Redux-React-Cribsheet
 
-> Redux is a JavaScript state management library. It can be used with libraries like React and Angular. But in this cribsheet, we will use it with [React](https://github.com/sayeemabdullah/React-Cribsheet#readme). This is an initiative to make small notes on React which may help me or anyone else in the future. You can also checkout my [React](https://github.com/sayeemabdullah/React-Cribsheet#readme) and [CSS](https://github.com/sayeemabdullah/CSS-Cribsheet) Cribsheets. 
+> Redux is a JavaScript state management library. It can be used with libraries like React and Angular. But in this cribsheet, we will use it with [React](https://github.com/sayeemabdullah/React-Cribsheet#readme). This is an initiative to make small notes on React which may help me or anyone else in the future. You can also check out my [React](https://github.com/sayeemabdullah/React-Cribsheet#readme) and [CSS](https://github.com/sayeemabdullah/CSS-Cribsheet) Cribsheets. 
 
 
 ## Three Building Parts
@@ -274,7 +274,57 @@ ___
 
 ## Scenario 2
 
-We will update our scenario one a little bit. We will add a input where we can put numbers of apple we want to buy and it will decrease accordingly. 
+We will update our scenario a little bit. We will add an input where we can put numbers of apples we want to buy and it will decrease accordingly. 
 
 ___
+
+## Action Payload
+
+Now if we want to implement scenario 2, we will first make changes in our `AppleContainer`. So now it will look something like this:
+
+``` js
+
+import React from "react";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { buyApple } from "../redux";
+
+function AppleContainer(props) {
+  const [number, setNumber] = useState(1);
+  return (
+    <>
+      <div>
+        <h2>Number of Apples: {props.numOfApples}</h2>
+        <input
+          type="text"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+        ></input>
+        <button onClick={() => props.buyApple(number)}>
+          Buy {number} of Apple(s)
+        </button>
+      </div>
+    </>
+  );
+}
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    numOfApples: state.apple.numOfApples,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    buyApple: (number) => dispatch(buyApple(number)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
+
+```
+The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch. 
+___
+
 
