@@ -324,7 +324,34 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
-The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch.
+The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch and if you are using **hooks** it more easier as shown below:
+
+``` js
+
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { buyApple } from "../redux";
+
+function AppleContainer(props) {
+  const numberOfCakes = useSelector((state) => state.apple.numOfApples);
+  const dispatch = useDispatch();
+  const [number, setNumber] = useState(1);
+  return (
+    <div>
+      <h2>Number of Apples: {numberOfCakes} </h2>
+      <input
+        type="text"
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
+      ></input>
+      <button onClick={() => dispatch(buyApple(number))}>Buy Apple</button>
+    </div>
+  );
+}
+
+export default AppleContainer;
+
+```
 
 Once it is done we will make changes to our `appleAction` file. So after the changes, the file will look something like this:
 
@@ -372,3 +399,5 @@ export default appleReducer;
 
 So here we will subtract the `action.payload` in the place of 1. Now we can see that our application works fine and we have successfully implemented our scenario 2. 
 ___
+
+
