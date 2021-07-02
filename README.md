@@ -51,7 +51,7 @@ So here we made a separate folder for all the redux files and inside the **redux
 ___
 
 
-## Scenario
+## Scenario I
 
 Before starting implementation lets us think of a scenario, so we will make an application that will show **number of apples** and if we press a button the **number of apples will decrease**.
 So the basic structure of the `AppleContainer` will be something like the following: 
@@ -271,3 +271,10 @@ export default AppleContainer;
 I always believe hooks made our life easier. The code above is one of the examples. We don’t need to write functions like `mapStateToProps` and `mapDispatchToProps` we can simply use `useSelector` and `useDispatch`.
 
 ___
+
+## Scenario II
+
+We will update our scenario one a little bit. We will add a input where we can put numbers of apple we want to buy and it will decrease accordingly. 
+
+___
+
