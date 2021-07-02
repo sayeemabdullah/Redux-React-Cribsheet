@@ -54,7 +54,30 @@ ___
 ## Scenario 1
 
 Before starting implementation lets us think of a scenario, so we will make an application that will show **number of apples** and if we press a button the **number of apples will decrease**.
-So the basic structure of the `AppleContainer` will be something like the following: 
+So the basic structure of the `AppleContainer` will be something like the following if we are using a **class component** : 
+
+``` js
+
+import React, { Component } from "react";
+
+class AppleContainer extends Component {
+  render() {
+    return (
+      <>
+        <div>
+          <h2>Number of Apples: </h2>
+          <button>Buy Apple</button>
+        </div>
+      </>
+    );
+  }
+}
+
+export default AppleContainer;
+
+```
+
+And something like this if we are using a **functional component**:
 
 ``` js
 
@@ -74,7 +97,6 @@ function AppleContainer(props) {
 export default AppleContainer;
 
 ```
-
 ___
 
 ## Actions
@@ -445,7 +467,5 @@ export default appleReducer;
 
 So here we will subtract the `action.payload` in the place of 1. Now we can see that our application works fine and we have successfully implemented our **scenario 2**. 
 ___
-
-
 
 
