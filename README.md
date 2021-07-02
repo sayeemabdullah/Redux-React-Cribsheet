@@ -310,7 +310,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
 
-It is almost same as the **class component** but in the functional component which is self-explanatory.
+It is almost the same as the **class component** but in the functional component which is self-explanatory.
 
 ___
 
@@ -453,7 +453,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
 
-And if we are using **hooks**, its easier as shown below:
+And if we are using **hooks**, it’s easier as shown below:
 
 ``` js
 
@@ -528,5 +528,7 @@ export default appleReducer;
 
 So here we will subtract the `action.payload` in the place of 1. Now we can see that our application works fine and we have successfully implemented our **scenario 2**. 
 ___
+
+
 
 
