@@ -207,6 +207,8 @@ ___
 
 ## Connect in Class Component
 
+After connecting in the `AppleContainer` the file will look something like this:
+
 ``` js
 
 import { connect } from "react-redux";
@@ -243,14 +245,14 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
-
 ```
+
+So we can see we have used `mapStateToProps` and `mapDispatchToProps`. Firstly `mapStateToProps` is used when we want to access the **redux state** in our component. Here we get **redux state** as a parameter that can be used. If we want to dispatch any function we use `mapDispatchToProps`. And we connect both of them with our component using `connect`.
 
 ___
 
 ## Connect in Functional Component without Hooks
 
-After connecting in the `AppleContainer` the file will look something like this:
 
 ``` js
 
@@ -285,7 +287,8 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
-So we can see we have used `mapStateToProps` and `mapDispatchToProps`. Firstly `mapStateToProps` is used when we want to access the **redux state** in our component. Here we get **redux state** as a parameter that can be used. If we want to dispatch any function we use `mapDispatchToProps`. And we connect both of them with our component using `connect`.
+
+It is almost the same as the **class component** but in the functional component which is self-explanatory.
 
 ___
 
@@ -367,7 +370,7 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
-The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch and if you are using **hooks** it more easier as shown below:
+The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch and if you are using **hooks** it easier as shown below:
 
 ``` js
 
@@ -442,5 +445,7 @@ export default appleReducer;
 
 So here we will subtract the `action.payload` in the place of 1. Now we can see that our application works fine and we have successfully implemented our **scenario 2**. 
 ___
+
+
 
 
