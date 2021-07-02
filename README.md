@@ -397,7 +397,7 @@ export default appleReducer;
 
 ```
 
-So here we will subtract the `action.payload` in the place of 1. Now we can see that our application works fine and we have successfully implemented our scenario 2. 
+So here we will subtract the `action.payload` in the place of 1. Now we can see that our application works fine and we have successfully implemented our **scenario 2**. 
 ___
 
 
