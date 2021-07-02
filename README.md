@@ -51,7 +51,7 @@ So here we made a separate folder for all the redux files and inside the **redux
 ___
 
 
-## Scenario I
+## Scenario 1
 
 Before starting implementation lets us think of a scenario, so we will make an application that will show **number of apples** and if we press a button the **number of apples will decrease**.
 So the basic structure of the `AppleContainer` will be something like the following: 
@@ -272,7 +272,7 @@ I always believe hooks made our life easier. The code above is one of the exampl
 
 ___
 
-## Scenario II
+## Scenario 2
 
 We will update our scenario one a little bit. We will add a input where we can put numbers of apple we want to buy and it will decrease accordingly. 
 
