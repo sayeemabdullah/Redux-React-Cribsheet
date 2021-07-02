@@ -280,7 +280,7 @@ ___
 
 ## Action Payload
 
-Now if we want to implement scenario 2, we will first make changes in our `AppleContainer`. So now it will look something like this:
+Now as we want to implement scenario 2, we will first make changes in our `AppleContainer`. So now it will look something like this:
 
 ``` js
 
@@ -324,7 +324,26 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
-The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch. 
+The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch.
+
+Once it is done we will make changes to our `appleAction` file. So after the changes, the file will look something like this:
+
+``` js
+
+import { BUY_APPLE } from "./appleTypes";
+
+export const buyApple = (number = 1) => {
+  return {
+    type: BUY_APPLE,
+    payload: number,
+  };
+};
+
+
+```
+
+So we are passing a parameter named **number** and whose default value is 1. And `payload` where the number will be stored. We can name it anything but it’s better to name something relevant like payload.
+
 ___
 
 
