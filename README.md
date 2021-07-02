@@ -1,6 +1,6 @@
 # Redux-React-Cribsheet
 
-> Redux is a JavaScript state management library. It can be used with libraries like React and Angular. But in this cribsheet, we will use it with [React](https://github.com/sayeemabdullah/React-Cribsheet#readme).
+> Redux is a JavaScript state management library. It can be used with libraries like React and Angular. But in this cribsheet, we will use it with [React](https://github.com/sayeemabdullah/React-Cribsheet#readme). This is an initiative to make small notes on React which may help me or anyone else in the future. You can also checkout my [React](https://github.com/sayeemabdullah/React-Cribsheet#readme) and [CSS](https://github.com/sayeemabdullah/CSS-Cribsheet) Cribsheets. 
 
 
 ## Three Building Parts
