@@ -310,7 +310,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
 
-It is almost the same as the **class component** but in the functional component which is self-explanatory.
+It is almost same as the **class component** but in the functional component which is self-explanatory.
 
 ___
 
