@@ -369,7 +369,7 @@ export const buyApple = (number = 1) => {
 
 ```
 
-So we are passing a parameter named **number** and whose default value is 1. And `payload` where the number will be stored. We can name it anything but it’s better to name something relevant like payload.
+So we are passing a **default function parameter** named **number** and whose **default value** is 1. And `payload` where the number will be stored. We can name it anything but it’s better to name something relevant like payload.
 
 And now the final step will be changing the `appleReducer` which will be like the following after the changes are done:
 
