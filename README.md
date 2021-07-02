@@ -348,7 +348,67 @@ ___
 
 ## Action Payload
 
-Now as we want to implement scenario 2, we will first make changes in our `AppleContainer`. So now it will look something like this:
+Now as we want to implement scenario 2, we will first make changes in our `AppleContainer`. So now it will look something like this if we are using **class component**:
+
+``` js
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { buyApple } from "../redux";
+
+class AppleContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      number: 1,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ number: event.target.value });
+  }
+
+  render() {
+    return (
+      <>
+        <div>
+          <h2>Number of Apples: {this.props.numOfApples}</h2>
+          <input
+            type="text"
+            value={this.state.number}
+            onChange={this.handleChange}
+          ></input>
+          <button onClick={() => this.props.buyApple(this.state.number)}>
+            Buy {this.state.number} Apple(s)
+          </button>
+        </div>
+      </>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    numOfApples: state.apple.numOfApples,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    buyApple: (number) => dispatch(buyApple(number)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
+
+
+```
+
+The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch and if we are using **functional component without using hooks**:
 
 ``` js
 
@@ -392,7 +452,8 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
-The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch and if you are using **hooks** it easier as shown below:
+
+And if we are using **hooks**, its easier as shown below:
 
 ``` js
 
