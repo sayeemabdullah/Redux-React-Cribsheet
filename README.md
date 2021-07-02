@@ -205,7 +205,50 @@ The provider is used to provide the store to components and we specify the store
 
 ___
 
-## Connect without Hooks
+## Connect in Class Component
+
+``` js
+
+import { connect } from "react-redux";
+import { buyApple } from "../redux";
+
+import React, { Component } from "react";
+
+
+class AppleContainer extends Component {
+  render() {
+    return (
+      <>
+        <div>
+          <h2>Number of Apples: {this.props.numOfApples}</h2>
+          <button onClick={this.props.buyApple}>Buy Apple</button>
+        </div>
+      </>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    numOfApples: state.apple.numOfApples,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    buyApple: () => dispatch(buyApple()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
+
+
+```
+
+___
+
+## Connect in Functional Component without Hooks
 
 After connecting in the `AppleContainer` the file will look something like this:
 
@@ -246,7 +289,7 @@ So we can see we have used `mapStateToProps` and `mapDispatchToProps`. Firstly `
 
 ___
 
-## Connect with Hooks
+## Connect in Functional Component with Hooks
 
 ``` js
 
