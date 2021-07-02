@@ -408,7 +408,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(AppleContainer);
 
 ```
 
-The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch and if we are using **functional component without using hooks**:
+The changes are pretty basic react which are self-explanatory. In `mapDispatchToProps` we have passed a parameter **number** which states the numbers of apples we want to dispatch and if we are using **functional component without using hooks** (except `useState` you know what I meant :speak_no_evil: ):
 
 ``` js
 
@@ -528,6 +528,8 @@ export default appleReducer;
 
 So here we will subtract the `action.payload` in the place of 1. Now we can see that our application works fine and we have successfully implemented our **scenario 2**. 
 ___
+
+
 
 
 
