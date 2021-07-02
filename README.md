@@ -344,6 +344,31 @@ export const buyApple = (number = 1) => {
 
 So we are passing a parameter named **number** and whose default value is 1. And `payload` where the number will be stored. We can name it anything but it’s better to name something relevant like payload.
 
+And now the final step will be changing the `appleReducer` which will be like the following after the changes are done:
+
+``` js
+
+import { BUY_APPLE } from "./appleTypes";
+
+const initialState = {
+  numOfApples: 20,
+};
+
+const appleReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case BUY_APPLE:
+      return {
+        ...state,
+        numOfApples: state.numOfApples - action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export default appleReducer;
+
+```
+
+So here we will subtract the `action.payload` in the place of 1. Now we can see that our application works fine and we have successfully implemented our scenario 2. 
 ___
-
-
