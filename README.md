@@ -529,8 +529,240 @@ export default appleReducer;
 So here we will subtract the `action.payload` in the place of 1. Now we can see that our application works fine and we have successfully implemented our **scenario 2**. 
 ___
 
+## Scenario 3
 
+We will request to fetch data of some users from a [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users) and it will render as a list in our application if fetching is successful and will show an error message if fetching fails. 
 
+___
 
+## Async Actions
 
+First, we will define our user types inside our `userTypes` as below:
 
+``` js
+
+export const FETCH_USERS_REQUEST = "FETCH_USERS_REQUEST";
+export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
+export const FETCH_USERS_FAILURE = "FETCH_USERS_FAILURE";
+
+```
+
+Now in `userActions` we will make three action creators as shown below:
+
+``` js
+
+import { FETCH_USERS_REQUEST } from "./userTypes";
+import { FETCH_USERS_SUCCESS } from "./userTypes";
+import { FETCH_USERS_FAILURE } from "./userTypes";
+
+export const fetchUsersRequest = () => {
+  return {
+    type: FETCH_USERS_REQUEST,
+  };
+};
+
+const fetchUsersSuccess = (users) => {
+  return {
+    type: FETCH_USERS_SUCCESS,
+    payload: users,
+  };
+};
+
+const fetchUsersFailure = (error) => {
+  return {
+    type: FETCH_USERS_FAILURE,
+    payload: error,
+  };
+};
+
+```
+
+Now in `userReducer` we will create the following reducer:
+
+``` js
+
+import { FETCH_USERS_REQUEST } from "./userTypes";
+import { FETCH_USERS_SUCCESS } from "./userTypes";
+import { FETCH_USERS_FAILURE } from "./userTypes";
+
+const initialState = {
+  loading: false,
+  users: [],
+  error: "", 
+};
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_USERS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_USERS_SUCCESS:
+      return {
+        loading: false,
+        users: action.payload,
+        error: "",
+      };
+    case FETCH_USERS_FAILURE:
+      return {
+        loading: false,
+        users: [],
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export default reducer;
+
+``` 
+
+In `index.js` inside the `redux` folder we will export all the actions:
+
+``` js
+
+export * from "./user/userActions";
+
+```
+
+And add our reducer in our `rootReducer` file:
+
+``` js
+
+import { combineReducers } from "redux";
+import userReducer from "./user/userReducer";
+
+const rootReducer = combineReducers({
+  user: userReducer,
+});
+
+export default rootReducer;
+
+```
+___
+
+## Redux Thunk Get Request
+
+Before starting making our store we will install two libraries `axios` and [`redux-thunk`](https://www.npmjs.com/package/redux-thunk). To do so we will write the below command in our terminal:
+
+``` shell
+
+npm install axios redux-thunk
+
+```
+
+Once it is done we will make our store:
+
+``` js
+
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "./rootReducer";
+import thunk from "redux-thunk";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+export default store;
+
+```
+
+As we have seen before now we will pass another parameter with `rootReducer`. So we will pass `applyMiddleware` where our middleware is `thunk`.
+
+**So what does Redux Thunk do?**
+
+> Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of action or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch and getState as parameters.
+
+Now we will make the following changes in `userActions`:
+
+``` js
+
+import axios from "axios";
+import { FETCH_USERS_REQUEST } from "./userTypes";
+import { FETCH_USERS_SUCCESS } from "./userTypes";
+import { FETCH_USERS_FAILURE } from "./userTypes";
+
+export const fetchUsersRequest = () => {
+  return {
+    type: FETCH_USERS_REQUEST,
+  };
+};
+
+const fetchUsersSuccess = (users) => {
+  return {
+    type: FETCH_USERS_SUCCESS,
+    payload: users,
+  };
+};
+
+const fetchUsersFailure = (error) => {
+  return {
+    type: FETCH_USERS_FAILURE,
+    payload: error,
+  };
+};
+
+export const fetchUsers = () => {
+  return (dispatch) => {
+    dispatch(fetchUsersRequest);
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((response) => {
+        const users = response.data;
+        dispatch(fetchUsersSuccess(users));
+      })
+      .catch((error) => {
+        const errorMsg = error.message;
+        dispatch(fetchUsersFailure(errorMsg));
+      });
+  };
+};
+
+```
+`fetchUsers` is returning another function by getting help from our thunk middleware. We did **axios request** as we do in our react application. We used `dispatch(fetchUsersRequest)` to set loading to `true` as when the data is fetching it will show loading in the screen and `dispatch(fetchUsersSuccess(users))` to set our list of users in our fetchUsersSuccess’s payload as a list and  `dispatch(fetchUsersFailure(errorMsg))` to store the error message in fetchUsersFailure’s payload.
+
+Now as everything is done we will create the `UserContainer.jsx`:
+
+``` js
+
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchUsers } from "../redux";
+
+function UserContainer({ fetchUsers, userData }) {
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+  return userData.loading ? (
+    <h3>Loading...</h3>
+  ) : userData.error ? (
+    <h3>{userData.error}</h3>
+  ) : (
+    <div>
+      <h2>Users List</h2>
+      <div>
+        {userData &&
+          userData.users &&
+          userData.users.map((user) => <p>{user.name}</p>)}
+      </div>
+    </div>
+  );
+}
+
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUsers: () => dispatch(fetchUsers()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserContainer);
+
+```
+I believe if we followed through the whole cribsheet and know react, the above code is pretty self-explanatory. 
+___
